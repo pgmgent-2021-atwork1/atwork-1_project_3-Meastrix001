@@ -47,9 +47,9 @@
     createHTMLForFlowerLineUp(data) {
       if (this.$artAndExhlist) {
          let tempStr = "";
-        data.map(art => {
+        data.slice(0, 10).map(art => {
         let allImages = art.images.map((img, index) => {
-          return `<img loading="lazy" src="/app/media/images/${img}">`
+          return `<img loading="lazy" src="../media/images/${img}">`
         }).join('')
          tempStr +=`<li>
         <h2>${art.title}</h2>
@@ -62,14 +62,16 @@
       }
      if (this.$artAndExhlistOnHomePage) {
       let tempStr = "";
-        data.slice(3, 6).map(art => {
+        data.map(art => {
+          if (art.highlight === true) {
         tempStr +=`<li>
-        <img  loading="lazy" src="/app/media/images/${art.images[0]}">
+        <img  loading="lazy" src="media/images/${art.cover}">
+        <p>${art.location !== null ? art.location : ''}</p>
         <h2>${art.title}</h2>
         <h3>${art.subtitle}</h3>
-        <p>${art.location}</p>
         </li>`
-        return this.$artAndExhlistOnHomePage.innerHTML = tempStr
+      }
+      return this.$artAndExhlistOnHomePage.innerHTML = tempStr
       })
      }
 
@@ -106,12 +108,12 @@
           <p><a href=""><span class="learn-more">Learn more</span></a></p>
           </li>
           `
-          this.$atelierOnHomePage.innerHTML = tempStr
+          this.$atelierOnHomePage.innerHTML += tempStr
         })
-        this.artJsonFile.slice(4, 7).map(item => {
+        this.artJsonFile.slice(4, 9).map(item => {
           let tempStr = '';
           tempStr += `
-          <li><img  loading="lazy" src="/app/media/images/${item.images[0]}"></li>`
+          <li><img  loading="lazy" src="media/images/${item.images[0]}"></li>`
           this.$footerGalery.innerHTML += tempStr  
         })
       }

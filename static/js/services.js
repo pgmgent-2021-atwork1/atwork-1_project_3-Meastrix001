@@ -1,5 +1,5 @@
 function AtelierJson() {
-  const ATELIER_JSON = '/app/data/atelier.json';
+  const ATELIER_JSON = 'data/atelier.json';
   this.createLineUpForAtelier = async () => {
     try {
       const response = await fetch(ATELIER_JSON)
@@ -11,7 +11,7 @@ function AtelierJson() {
   }
 }
 function PressJson() {
-  const PRESS_JSON = '/app/data/press.json';
+  const PRESS_JSON = 'data/press.json';
   this.createLineUpForPressJson = async () => {
     try {
       const response = await fetch(PRESS_JSON)

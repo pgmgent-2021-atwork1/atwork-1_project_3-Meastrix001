@@ -4,7 +4,7 @@
     "title": "Strelitzia step by step",
     "description": "Strelitzia flowers stand out in both expressive form ànd expressive colour. Having such a spiky...",
     "learn_more": "Learn more",
-    "image": "/app/media/Atelier-studio/strelitzia.jpg"
+    "image": "media/Atelier-studio/strelitzia.jpg"
   },
   {
     
@@ -12,14 +12,14 @@
     "title": "How a massive Lupine Tower budded in the garden of an art collector",
     "description": "After numerous sketches and studies with paint in the studio, after shaping the flower calyxes,...",
     "learn_more": "Learn more",
-    "image": "/app/media/Atelier-studio/lupinetower.gif"
+    "image": "media/Atelier-studio/lupinetower.gif"
   },
   {
     "title_short": "The creative process of imaging a sculpture",
     "title": "The Lupine Studies, by Arne Quinze",
     "description": "See how Arne Quinze's sculpture comes to life in his studio after many studies and versions. This...",
     "learn_more": "Learn more",
-    "image": "/app/media/Atelier-studio/lupinestudies.gif"
+    "image": "media/Atelier-studio/lupinestudies.gif"
   },
   {
     
@@ -27,7 +27,7 @@
     "title": "How to paint a massive Lupine Tower",
     "description": "This massive Lupine Tower sculpture is about to bud from the Antwerp soil. After finishing its...",
     "learn_more": "Learn more",
-    "image": "/app/media/Atelier-studio/paint_lupinetower.jpg"
+    "image": "media/Atelier-studio/paint_lupinetower.jpg"
   },
   {
     
@@ -35,7 +35,7 @@
     "title": "Creating a Lupine for a collector's garden",
     "description": "A 6m tall sculpture will soon overlook the garden of this collector...",
     "learn_more": "Learn more",
-    "image": "/app/media/Atelier-studio/collectorsgarden.jpg"
+    "image": "media/Atelier-studio/collectorsgarden.jpg"
   },
   {
     
@@ -43,7 +43,7 @@
     "title": "Visiting Frieze Sculpture",
     "description": "Curator Clare Lilley (Director of Programme, Yorkshire Sculpture Park), who has been closely..",
     "learn_more": "Learn more",
-    "image": "/app/media/Atelier-studio/frieze_sculpture.png"
+    "image": "media/Atelier-studio/frieze_sculpture.png"
   },
   {
     
@@ -51,7 +51,7 @@
     "title": "Colourising a Lupine Tower sculpture — Part 2",
     "description": "I approach the painting of my sculptures in the same way as I paint my canvases. It’s an ongoing...",
     "learn_more": "Learn more",
-    "image": "/app/media/Atelier-studio/colourisinglupine.jpg"
+    "image": "media/Atelier-studio/colourisinglupine.jpg"
   },
   {
     
@@ -59,7 +59,7 @@
     "title": "Colourising a Lupine Tower sculpture",
     "description": "It was precisely the observation of colours the moment that Quinze's wildflower garden started to...",
     "learn_more": "Learn more",
-    "image": "/app/media/Atelier-studio/colourisinglupine2.jpg"
+    "image": "media/Atelier-studio/colourisinglupine2.jpg"
   },
   {
     
@@ -67,6 +67,6 @@
     "title": "Lupine tower assembly",
     "description": "Hard work for Arne Quinze and his team at the steel workshop, as he is completing a public art...",
     "learn_more": "Learn more",
-    "image": "/app/media/Atelier-studio/lupineassembly.jpg"
+    "image": "media/Atelier-studio/lupineassembly.jpg"
   }
 ]
