@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" href="../static/css/press.css">
 </head>
 <body>
     <button onclick="" id="toTop">To top</button>
@@ -17,8 +19,27 @@
       </ul>
      <a href="/app/index.html"> Arne Quinze</a>
     </header>
-
-    
+    <div class="press-intro">
+      <h1>Press</h1>
+    </div>
+    <div class="press">
+      <div class="press-images press-image-container">
+      <div class="rotate-right">
+        <h3>in the press</h3>
+        <p><a href=""><span class="link-to">view all</span></a></p>
+      </div>
+      <ul class="press-list-In">
+      </ul>
+    </div>
+    <div class="press-image-container">
+    <div class="rotate-right">
+      <h3>Press Release</h3>
+      <p><a href=""><span class="link-to">view all</span></a></p>
+    </div>
+    <ul class="press-list-Release">
+    </ul>
+    </div> 
+  </div>
     <footer>
         <div class="footer--social">
           <ul>
@@ -187,4 +208,7 @@
       </div>
       </footer>
 </body>
+<script src="../data/press.json"></script>
+<script src="../static/js/services.js"></script>
+<script src="../static/js/main.js"></script>
 </html>

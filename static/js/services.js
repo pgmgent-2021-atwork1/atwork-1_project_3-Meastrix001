@@ -11,7 +11,7 @@ function AtelierJson() {
   }
 }
 function PressJson() {
-  const PRESS_JSON = 'data/press.json';
+  const PRESS_JSON = '../data/press.json';
   this.createLineUpForPressJson = async () => {
     try {
       const response = await fetch(PRESS_JSON)
