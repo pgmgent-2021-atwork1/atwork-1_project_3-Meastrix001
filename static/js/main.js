@@ -17,39 +17,35 @@
       this.$atelierImagesList = document.querySelector('.atelier-list');
       this.$pressImagesList = document.querySelector('.press-images')
       this.$pressListIn = document.querySelector('.press-list-In');
-      this.$pressListRelease = document.querySelector('.press-list-Release');
+      this.$pressListRelease = document.querySelector('.press-list-Release')
+      this.$;
     },
     buildUI() {
       if (this.$artAndExhHeader) {
         this.createHTMLforArtAndExhibitionsHeader()
       }
     },
-    // scrollToTop(){
-    //   let toTopButton = document.getElementById("toTop");
-    //   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    //     mybutton.style.display = "block";
-    //   } else {
-    //     mybutton.style.display = "none";
-    //   }
-    //     document.body.scrollTop = 0; // For Safari
-    //     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-    // },
     async fetchJSONS() {
-      if (this.$artAndExhlist || this.$artAndExhlistOnHomePage) {
+      if (this.$artAndExhlist || this.$artAndExhlistOnHomePage || this.$pressImagesList) {
         const artAPI = new ArtJson();
         const artJSON = await artAPI.createLineUpForArtJson();
         this.artJsonFile = artJSON
         this.createHTMLForArtLineUp(artJSON);
       }
-      if (this.$atelierImagesList || this.$atelierOnHomePage) {
+      if (this.$atelierImagesList) {
         const AtelierJsonFile = new AtelierJson()
         const AtelierJSONFile = await AtelierJsonFile.createLineUpForAtelier();
         this.createHTMLfromJSON(AtelierJSONFile)
       }
+      if (this.$atelierOnHomePage) {
+        const AtelierJsonFileFromHome = new AtelierJsonHome()
+        const AtelierJSONFileHome = await AtelierJsonFileFromHome.createLineUpForAtelierForHome()
+        this.createHTMLforAtelierHome(AtelierJSONFileHome)
+      }
       if (this.$pressImagesList) {
         const PressJsonFile = new PressJson();
         const PressJSONFile = await PressJsonFile.createLineUpForPressJson();
-        this.createHTMLfromJSON(PressJSONFile)
+        this.createHTMLForPress(PressJSONFile)
       }
     },
     createHTMLForArtLineUp(data) {
@@ -63,6 +59,7 @@
             let allImages = item.images.map((img, index) => {
             return `<img class="lazy" loading="lazy" src="../media/images/${img}" alt="...">`
             }).join('')
+            this.artTitleParam = item.title.replace(/ /g , '-')
             return `
             <div class="art-exh--lineUp--block">
             <section class="art-exh--lineUp--inner">
@@ -76,9 +73,10 @@
             </div>`
           }).join('')
           return `
-          <li>
+          <li><a href="in-dialogue-with-calatrava/index.html?title=${this.artTitleParam}">
           <h2 id="${year}">${year}</h2>
           ${filterdEvents}
+          <a>
           </li>`
         }).join('')
         return this.$artAndExhlist.innerHTML = mapEvents
@@ -88,7 +86,7 @@
         let filterdObjects = data.filter(I => I.highlight === true)
         filterdObjects.map(art => {
             tempStr += `<li>
-        <img  loading="lazy" data-src="media/images/${art.cover}">
+        <img  loading="lazy" src="media/images/${art.cover}">
         <p>${art.location !== null ? art.location : ''}</p>
         <h2>${art.title}</h2>
         <h3>${art.subtitle}</h3>
@@ -96,10 +94,52 @@
           return this.$artAndExhlistOnHomePage.innerHTML = tempStr
         })
       }
-
-
     },
     createHTMLfromJSON(data) {
+      if (this.$atelierImagesList) {
+        let tempStr
+        data.map(item => {
+          tempStr = `
+          <li>
+          <img src="../${item.image !== undefined ? item.image : ""}">
+          <h3>${item.title_short !== undefined ? item.title_short : item}</h3>
+          <h2>${item.title !== undefined ? item.title : item}</h2>
+          <p>${item.description !== undefined ? item.description : item}</p>
+          <p><a href=""><span class="learn-more">Learn more</span></a></p>
+          </li>
+          `
+          this.$atelierImagesList.innerHTML += tempStr
+        });
+        };
+    },
+    createHTMLforAtelierHome(data){
+      data.slice(0, 3).map(item => {
+        let tempStr = '';
+        tempStr += `
+        <li>
+        <img loading="lazy" src="${item.image !== undefined ? item.image : ""}">
+        <h3>${item.title_short !== undefined ? item.title_short : ""}</h3>
+        <h2>${item.title !== undefined ? item.title : ""}</h2>
+        <p>${item.description !== undefined ? item.description : ""}</p>
+        <p><a href=""><span class="learn-more">Learn more</span></a></p>
+        </li>
+        `
+        this.$atelierOnHomePage.innerHTML += tempStr
+      });
+    },
+    createHTMLforArtAndExhibitionsHeader(){
+      let tempStrForYears = '';
+      years.map(year => {
+        tempStrForYears += `<li><a href="#${year}">${year}</a></li>`
+      })
+      this.$artAndExhYearsList.innerHTML = tempStrForYears
+      let tempStrForCats = '';
+      categories.map(cat => {
+        tempStrForCats += `<li id="${cat}"><a href="">${cat}<a></li>`
+      })
+      this.$artAndExhCategoriesList.innerHTML = tempStrForCats
+    },
+    createHTMLForPress(data){
       data.map(item => {
         let tempStr = `
         <li>
@@ -116,42 +156,6 @@
           return this.$pressListIn.innerHTML += tempStr
         };
       });
-      if (this.$atelierImagesList) {
-        return this.$atelierImagesList.innerHTML = tempStr
-      };
-      if (this.$atelierOnHomePage) {
-        data.slice(0, 3).map(item => {
-          let tempStr = '';
-          tempStr += `
-          <li>
-          <img loading="lazy" src="${item.image !== undefined ? item.image : ""}">
-          <h3>${item.title_short !== undefined ? item.title_short : ""}</h3>
-          <h2>${item.title !== undefined ? item.title : ""}</h2>
-          <p>${item.description !== undefined ? item.description : ""}</p>
-          <p><a href=""><span class="learn-more">Learn more</span></a></p>
-          </li>
-          `
-          this.$atelierOnHomePage.innerHTML += tempStr
-        });
-        this.artJsonFile.slice(4, 9).map(item => {
-          let tempStr = '';
-          tempStr += `
-          <li><img  loading="lazy" data-src="media/images/${item.images[0]}"></li>`
-          this.$footerGalery.innerHTML += tempStr
-        });
-      };
-    },
-    createHTMLforArtAndExhibitionsHeader(){
-      let tempStrForYears = '';
-         years.map(year => {
-        tempStrForYears += `<li><a href="#${year}">${year}</a></li>`
-      })
-      this.$artAndExhYearsList.innerHTML = tempStrForYears
-      let tempStrForCats = '';
-      categories.map(cat => {
-      tempStrForCats += `<li><a href="#">${cat}<a></li>`
-      })
-      this.$artAndExhCategoriesList.innerHTML = tempStrForCats
     }
   }
   app.initialize();

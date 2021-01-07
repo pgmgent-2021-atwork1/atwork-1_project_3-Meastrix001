@@ -1,3 +1,48 @@
-.press-image-container{
-  position: relative;
+
+.press-intro,
+.press-inner{
+  margin-bottom: 3rem;
+}
+.press-list-In li,
+.press-list-Release li{
+  margin-bottom: 5rem;
+}
+@media(min-width:58rem) {
+  .press-image-container{
+    position: relative;
+    padding-bottom: 6rem;
+  }
+  .press-image-container img{
+    width: 27rem;
+    height: auto;
+  }
+  .press-list-Release,
+  .press-list-In{
+    display: flex;
+    width: 70%;
+    margin: auto;
+  }
+  .press-list-Release li,
+  .press-list-In li {
+    width: 100%;
+    padding: 0.5rem;
+  }
+  .press-inner h3{
+    margin: auto;
+  }
+}
+@media(min-width:75rem){
+  .press-list-Release,
+  .press-list-In{
+    display: flex;
+    width: 100%;
+    margin: auto;
+  }
+  .press-inner{
+    margin-left: -11rem;
+  }
+  .press-list-Release li,
+  .press-list-In li {
+    padding: 1rem;
+  }
 }

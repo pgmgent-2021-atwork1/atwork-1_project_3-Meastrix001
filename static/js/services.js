@@ -1,8 +1,20 @@
 function AtelierJson() {
-  const ATELIER_JSON = 'data/atelier.json';
+  const ATELIER_JSON = '../data/atelier.json';
   this.createLineUpForAtelier = async () => {
     try {
       const response = await fetch(ATELIER_JSON)
+      const data = await response.json();
+      return data
+    } catch(error) {
+      console.log(error)
+    }
+  }
+}
+function AtelierJsonHome(){
+  const ATELIER_JSON_HOME = 'data/atelier.json';
+  this.createLineUpForAtelierForHome = async () => {
+    try {
+      const response = await fetch(ATELIER_JSON_HOME)
       const data = await response.json();
       return data
     } catch(error) {

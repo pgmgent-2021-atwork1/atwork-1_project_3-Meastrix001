@@ -11,6 +11,10 @@ body{
   max-width: 150rem;
   margin: auto;
 }
+.container{
+  padding: 3rem 0;
+  margin: auto;
+}
 .home--page-image img{
   transition: 0.3s;
   padding-left: 1rem;
@@ -52,8 +56,9 @@ font-size: 1.5rem;
 .align-right{
 text-align: right;
 }
-.qoute{
+.quote{
 font-style: italic;
+text-align: center;
 }
 h1{
   font-size: 2rem;
@@ -129,7 +134,7 @@ header{
   justify-content: space-between;
   align-items: center;
   margin: auto;
-  padding-bottom: 4rem;
+  padding-bottom: 2rem;
   padding-top: 3rem;
 }
 .home--page-intro{
@@ -160,6 +165,9 @@ header{
   .hp-art-exhibitions{
     display: flex;
     position: relative;
+    height: 31rem;
+    margin: 8rem 0;
+    align-items: center;
   }
   .rotate-right{
     transform: rotate(-90deg) translateX(50%);
@@ -167,7 +175,7 @@ header{
     width: 15rem;
     height: fit-content;
     text-align: center;
-    top: 50%;
+    top: 60%;
     margin-left: -3rem;
   }
   .rotate-right h3{
@@ -180,6 +188,7 @@ header{
   }
   .hp-art-exhibitons--list li{
     margin: 2rem;
+    margin-top: 0;
   }
 }
 .hp-atelier--list li{
@@ -188,7 +197,13 @@ header{
 .hp-atelier--list li img{
   margin: auto;
 }
+.hp-art-exhibitons--inner{
+  margin: 5rem 0;
+}
 @media(min-width: 58rem) {
+  .hp-art-exhibitons--inner{
+    margin: 10rem 0;
+  }
   .hp--page-intro-2{
     display: flex;
     margin-bottom: 5rem;

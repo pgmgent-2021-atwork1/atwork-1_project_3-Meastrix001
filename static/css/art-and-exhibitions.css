@@ -28,9 +28,6 @@ color: blue;
   flex-wrap: wrap;
   margin-bottom: 2rem;
 }
-/* .art-exh--lineUp--block section{
-  width: 100%;
-} */
 .art-exh--lineUp--block img{
   margin: 0.3rem;
 }
@@ -43,13 +40,14 @@ margin-bottom: 3rem;
 @media(min-width:55rem){
   .art-exh--lineUp--block{
     display: flex;
+    align-items: center;
+    justify-content: space-around;
   }
   .art-exh--lineUp--inner{ 
     width: 30%;
   }
   .art-exh--lineUp--images{
     width: 60%;
-    margin-left: 10rem;
   }
   .art-exh--lineUp--inner h3,
   .art-exh--lineUp--inner h4,

@@ -7,9 +7,7 @@ categories = [
   'Public art',
   'Sculpture',
   'Study',
-  'Show all',
-  'List view',
-  'Map view'
+  'Show all'
 ]
 years = [
   'Show all',
