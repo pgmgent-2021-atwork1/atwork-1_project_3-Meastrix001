@@ -9,6 +9,16 @@ function AtelierJson() {
       console.log(error)
     }
   }
+  const ATELIER_JSON_DETAIL = '../../data/atelier.json';
+  this.fetchJsonforDetails = async () => {
+    try {
+      const response = await fetch(ATELIER_JSON_DETAIL)
+      const data = await response.json();
+      return data
+    } catch(error) {
+      console.log(error)
+    }
+  }
 }
 function AtelierJsonHome(){
   const ATELIER_JSON_HOME = 'data/atelier.json';
@@ -27,6 +37,16 @@ function PressJson() {
   this.createLineUpForPressJson = async () => {
     try {
       const response = await fetch(PRESS_JSON)
+      const data = await response.json();
+      return data
+    } catch(error) {
+      console.log(error)
+    }
+  }
+  const PRESS_JSON_DETAIL = '../../data/press.json';
+  this.fetchJsonforDetails = async () => {
+    try {
+      const response = await fetch(PRESS_JSON_DETAIL)
       const data = await response.json();
       return data
     } catch(error) {

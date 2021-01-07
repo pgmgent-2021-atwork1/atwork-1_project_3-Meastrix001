@@ -2,49 +2,104 @@
   {
     "title_short": "Arne Quinze builds Lupine Tower for Frieze Sculpture, Regent's Park",
     "title": "Frieze — London",
+    "location": "Arne Quinze builds Lupine Tower for Frieze Sculpture, Regent's Park",
     "description": "This year, Frieze Sculpture returns to The Regent’s Park from 5 – 18 October, featuring 12...",
     "learn_more": "Open press release",
     "image": "../media/Press/frieze1.jpg",
-    "type": "Press release"
+    "type": "Press release",
+    "id": "1587916678",
+    "gallery":[
+      "223a96a88da3052a881605fce631ff26.jpg",
+      "2dfcef32a224017f5da09e2b1f6d020c.jpg",
+      "365bc4fae574ba020d0761a959fee17d.jpg",
+      "3c73e804af16fa5733d9abe2825df1b3.jpg",
+      "a14bfe244ab71d1460a84277dcaac5c2.jpg",
+      "b0713de6c6f59110b6451cb0ca8a57e8.jpg",
+      "d69e84311c399a1d995a19d3e98e3f7e.jpg",
+      "ff99423c1df4244ecbd9893953f225d5.jpg"
+    ],
+    "description_full": ""
   },
   {
     "title_short": "The first permanent public art sculpture by Arne Quinze in France",
     "title": "The Beautiful Dreamer — Paris",
+    "location": "",
     "description": "Arne Quinze continues his journey to reshape our cities into more human environments with this...",
     "learn_more": "Open press release",
     "image": "../media/Press/dreamer.jpg",
-    "type": "Press release"
+    "type": "Press release",
+    "id": "0257654231",
+    "gallery":[
+      "a6c1136d629ab7a24900f04d4c5ba12b.jpg",
+      "b416498c96e0405f5039b770e7c02c51.jpg",
+      "f020e31973151c2f3a37cd7e24cc6791.jpg",
+      "f36b09de9e6a01a60c4984d627f2be62.jpg",
+      "007664371d00e520ff1486ba64f8041a.jpg",
+      "00e2e473b96c8acc39c869b9e795238f.jpg",
+      "07f36b0d090863dea8b5899fe384da08.jpg",
+      "3dac73a49c58d9ae4e6280f747422e69.jpg",
+      "7abc817b41e43ed949d88dafa7ff92c8.jpg",
+      "88e787570cd09d12a91e8b047a4fffbf.jpg"
+    ],
+    "description_full": ""
   },
   {
     "title_short": "Arne Quinze press release",
     "title": "My secret Garden — Valencia",
+    "location": "",
     "description": "“My Secret Garden Valencia” presents a series of six public sculptures that will enter into...",
     "learn_more": "Open press release",
     "image": "../media/Press/secretgarden.jpg",
-    "type": "Press release"
+    "type": "Press release",
+    "id": "3340348157",
+    "gallery":[
+      "6ef308f2c8c8ef46db2eeaa0115ab022.jpg",
+      "8184994ab6a0f051a5ad49cafa7f97d2.jpg",
+      "95cc33e593e8fdeafe3312a76484876c.jpg",
+      "211506ff9c1ed7addff3dbef8f04b77a.jpg",
+      "268a54494e8bcd0448a91f06ef624d32.jpg",
+      "2d0898f1e215baf439704dc6584403f4.jpg",
+      "3780591cf016daa97614c2110820258e.jpg",
+      "44c0924e9412125b535e5c7229f10812.jpg",
+      "486af8c6b974fda0d9ce6566c387f04d.jpg",
+      "596619bc18b1589494a97c9c37a9778f.jpg"
+    ],
+    "description_full": ""
   },
   {
     "title_short": "Frieze Sculpture Park opens its doors to nature",
     "title": "Financial Times about Frieze Sculpture",
+    "location": "",
     "description": "An upbeat free-to-wander exhibition combines playfulness with serious concerns of contemporary...",
     "learn_more": "download article",
     "image": "../media/Press/friezesculpture.jpg",
-    "type": "In the press"
+    "type": "In the press",
+    "id": "7797170727",
+    "gallery":[],
+    "description_full": ""
   },
   {
     "title_short": "Visit Arne Quinze's Secret Garden until the 1st of March",
     "title": "My Secret Garden, Valencia — Extended",
+    "location": "",
     "description": "Since February 2019, the open-air exhibition of Arne Quinze already attracted 3 million visitors!...",
     "learn_more": "visit website",
     "image": "../media/Press/secretgarden2.jpg",
-    "type": "In the press"
+    "type": "In the press",
+    "id": "2563843376",
+    "gallery":[],
+    "description_full": ""
   },
   {
     "title_short": "An inspirational tour with Belgian most famous hip hop DJ",
     "title": "DJ Lefto in our studio",
+    "location": "",
     "description": "In this RTBF series, Hadja Lahbib follows Lefto visiting some of his friends artists and...",
     "learn_more": "visit website",
     "image": "../media/Press/djlefto.jpg",
-    "type": "In the press"
+    "type": "In the press",
+    "id": "2591598215",
+    "gallery":[],
+    "description_full": ""
   }
 ]

@@ -1,0 +1,52 @@
+
+.detail--related-list li,
+.detail--related-list img{
+width: 100%;
+max-width: 30rem;
+height: 25rem;
+}
+@media (min-width: 58rem){
+  .detail--related-list {
+    display: flex;
+    margin-left: 6rem;
+    margin: auto;
+    width: fit-content;
+    margin-bottom: 15rem;
+}
+.detail--related-list li{
+  padding: 1rem;
+}
+}
+.detail--about-hero{
+  width: fit-content;
+  margin: 0 auto 0 0;
+  padding-bottom: 4rem;
+}
+.detail--about-hero img{
+  width: calc(50vw + 83rem);
+  margin: auto;
+  box-sizing: border-box;
+  transition: 0.3s;
+  padding-right: 1rem;
+  transition: 0.3s;
+}
+.detail--about{
+  padding-bottom: 4rem;
+}
+@media(min-width: 75rem){
+  .detail--about-hero img {
+    transition: 0.3s;
+    padding-right: 10rem;
+}
+}
+.detail--galery-list li{
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  padding-bottom: 4rem;
+}
+.detail--galery img{
+  width: 26rem;
+  padding: 1rem;
+  margin: auto;
+}
