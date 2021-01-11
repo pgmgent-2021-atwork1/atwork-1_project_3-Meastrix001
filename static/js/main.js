@@ -24,8 +24,10 @@
       this.$detailsHeroImage = document.querySelector('.detail--about-hero')
       this.$atelierDetailsPage = document.querySelector('.visit-mons--about-hero')
       this.$pressDetailsPage = document.querySelector('.my-secret-garden-valencia--hero')
+      this.$pressDetailsPageHeader = document.querySelector('.my-secret-garden-valencia--header')
       this.$pressDetailsPageAbout = document.querySelector('.my-secret-garden-valencia--about')
-      this.$pressDetailsPageGallerylist = document.querySelector('.my-secret-garden-valencia--gallery')
+      this.$pressDetailsPageGallerylist = document.querySelector('.my-secret-garden-valencia--gallery-list')
+      this.$pressDetailsDownloads = document.querySelector('.my-secret-garden-valencia--downloadables-list')
     },
     async buildUI() {
       if (this.$artAndExhHeader) {
@@ -52,6 +54,13 @@
         const PressJSONFile = await PressJsonFile.createLineUpForPressJson();
         this.createHTMLForPress(PressJSONFile)
       }
+      if (this.$artAndExhlist) {
+        this.artAndExhFilterValue = null
+      this.$artAndExhCategoriesList.addEventListener('click', (ev) => {
+        const filterValue = ev.target.dataset.id || ev.target.parentNode.dataset.id
+        this.artAndExhFilterValue = filterValue
+      })
+      }
     },
     async fetchJSONS() {
       if (this.$detailsPage) {
@@ -72,8 +81,8 @@
     createHTMLForArtLineUpDetailsPage(data) {
       data.map(art => {
         let short_title = art.title.replace(/ /g, '-')
-        console.log(art.id)
-        console.log(this.URLIDParameter)
+        // console.log(art.id)
+        // console.log(this.URLIDParameter)
         if (short_title === this.URLparameter || art.id === this.URLIDParameter) {
           console.log(1)
           this.tags = art.tags.map(tag => {
@@ -93,35 +102,38 @@
           relatedItems = data.filter((u) => {
             return u.tags.indexOf(this.tags) > -1
           })
-          console.log(relatedItems)
-          relatedItems.slice(2, 5).map(relatedItem => {
-            let tempStr = '';
-            console.log(relatedItem)
-            tempStr += `
-              <li>
-              <a href="index.html?title=${relatedItem.title.replace(/ /g, '-')}">
-              <img loading="lazy" src="../../media/images/${relatedItem.images[0]}">
-              <p>${relatedItem.location}</p>
-              <h2>${relatedItem.title !== undefined ? relatedItem.title : ""}</h2>
-              <p>${relatedItem.description !== null ? relatedItem.description : ""}</p>
-              <p><a href=""><span class="learn-more">Learn more</span></a></p>
-              </a>
-              </li>
-              `
-            this.$detailsRelatedList.innerHTML += tempStr
-          })
+          if (relatedItems.lenght === undefined){
+            console.log(2)
+            this.$detailsRelatedList.innerHTML = `<li><h2>Geen gerelateerde items gevonden</h2></li>`
+          } else {
+            relatedItems.slice(2, 5).map(relatedItem => {
+              let tempStr = '';
+              console.log(relatedItem)
+              tempStr += `
+                <li>
+                <a href="index.html?title=${relatedItem.title.replace(/ /g, '-')}">
+                <img loading="lazy" src="../../media/images/${relatedItem.images[0]}">
+                <p>${relatedItem.location}</p>
+                <h2>${relatedItem.title !== undefined ? relatedItem.title : ""}</h2>
+                <p>${relatedItem.description !== null ? relatedItem.description : ""}</p>
+                <p><a href=""><span class="learn-more">Learn more</span></a></p>
+                </a>
+                </li>
+                `
+              this.$detailsRelatedList.innerHTML += tempStr
+            })
+          }
         }
       })
     },
- 
     createHTMLForArtLineUp(data) {
       if (this.$artAndExhlist) {
-        let mapEvents = years.map(year => {
-          const filterTroughEvents = data.filter(art => {
+        let mapArt = years.map(year => {
+          const filterTroughArt = data.filter(art => {
             return art.year.indexOf(year) > -1;
           });
-          console.log(filterTroughEvents)
-          let filterdEvents = filterTroughEvents.slice(0, 4).map(item => {
+          console.log(filterTroughArt)
+          let filterdArt = filterTroughArt.slice(0, 4).map(item => {
             let allImages = item.images.map((img, index) => {
               return `<img class="lazy" loading="lazy" src="../media/images/${img}" alt="...">`
             }).join('')
@@ -143,10 +155,10 @@
           return `
           <li>
           <h2 id="${year}">${year}</h2>
-          ${filterdEvents}
+          ${filterdArt}
           </li>`
         }).join('')
-        return this.$artAndExhlist.innerHTML = mapEvents
+        return this.$artAndExhlist.innerHTML = mapArt
       };
       if (this.$artAndExhlistOnHomePage) {
         let tempStr = "";
@@ -201,7 +213,7 @@
       this.$artAndExhYearsList.innerHTML = tempStrForYears
       let tempStrForCats = '';
       categories.map(cat => {
-        tempStrForCats += `<li id="${cat}"><a href="">${cat}<a></li>`
+        tempStrForCats += `<li data-id="${cat}"><a>${cat}<a></li>`
       })
       this.$artAndExhCategoriesList.innerHTML = tempStrForCats
     },
@@ -247,7 +259,7 @@
               <li>
               <a href="index.html?id=${item.id}">
               <img loading="lazy" src="../../${item.image}">
-              <p>${item.location}</p>
+              <p>${item.title_short}</p>
               <h2>${item.title !== undefined ? item.title : ""}</h2>
               <p>${item.description !== null ? item.description : ""}</p>
               <p><a href=""><span class="learn-more">Learn more</span></a></p>
@@ -261,20 +273,27 @@
     },
     createHTMLForPressDetails(data) {
       data.map(item =>{
+        console.log(item)
         if (item.id === this.URLIDParameter) {
-          this.$pressDetailsPageAbout.innerHTML =`
-          <p>${item.location}<p>
+          tempStr = `<li class="download-button"><a href="${item.pdf !== null ? item.pdf : ''}" download><p>download pdf</p></a></li>`
+          tempStr += `<li class="download-button"><a href="${item.docx !== null ? item.docx : ""}" download><p>download docx</p></a></li>`
+          tempStr += `<li class="download-button"><a href="${item.zipFile !== null ? item.zipFile : ""}" download><p>download zipFile</p></a></li>`
+
+          this.$pressDetailsDownloads.innerHTML = `${tempStr}`
+          this.$pressDetailsPageHeader.innerHTML =`
+          <p> Arne Quinze ${item.type}<p>
           <h1>${item.title}</h1>
           <p>${item.description}</p>
           `
-          // this.$pressDetailsPageFiles.innerHTML =`
-          
-          // `
           let images = item.gallery.map(image=>{
-            return `<img src="../../media/images/${image}">`
-          })
-          this.$pressDetailsPageGallerylist.innerHTML += `
-          <li>${images}</li>` 
+            return `
+            <li>
+            <a href="../../media/images/${image}" download><img src="../../media/images/${image}">
+            <p>Download Image</p>
+            </a>
+            </li>`
+          }).join(' ')
+          this.$pressDetailsPageGallerylist.innerHTML += `${images}` 
         }
       })
     },
