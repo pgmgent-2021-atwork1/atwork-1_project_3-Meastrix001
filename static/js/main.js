@@ -17,7 +17,7 @@
       this.$pressImagesList = document.querySelector('.press-images')
       this.$pressListIn = document.querySelector('.press-list-In');
       this.$pressListRelease = document.querySelector('.press-list-Release')
-      this.$detailsPage = document.querySelector('.details')
+      this.$detailsPage = document.querySelector('.detailsart')
       this.$detailsAbout = document.querySelector('.detail--about')
       this.$detailsGalery = document.querySelector('.detail--galery-list')
       this.$detailsRelatedList = document.querySelector('.detail--related-list')
@@ -58,6 +58,7 @@
         this.artAndExhFilterValue = null
       this.$artAndExhCategoriesList.addEventListener('click', (ev) => {
         const filterValue = ev.target.dataset.id || ev.target.parentNode.dataset.id
+        console.log(this.artAndExhFilterValue)
         this.artAndExhFilterValue = filterValue
       })
       }
@@ -102,10 +103,7 @@
           relatedItems = data.filter((u) => {
             return u.tags.indexOf(this.tags) > -1
           })
-          if (relatedItems.lenght === undefined){
-            console.log(2)
-            this.$detailsRelatedList.innerHTML = `<li><h2>Geen gerelateerde items gevonden</h2></li>`
-          } else {
+
             relatedItems.slice(2, 5).map(relatedItem => {
               let tempStr = '';
               console.log(relatedItem)
@@ -122,7 +120,6 @@
                 `
               this.$detailsRelatedList.innerHTML += tempStr
             })
-          }
         }
       })
     },
@@ -133,7 +130,7 @@
             return art.year.indexOf(year) > -1;
           });
           console.log(filterTroughArt)
-          let filterdArt = filterTroughArt.slice(0, 4).map(item => {
+          let filterdArt = filterTroughArt.map(item => {
             let allImages = item.images.map((img, index) => {
               return `<img class="lazy" loading="lazy" src="../media/images/${img}" alt="...">`
             }).join('')
@@ -199,7 +196,7 @@
         <h3>${item.title_short !== undefined ? item.title_short : ""}</h3>
         <h2>${item.title !== undefined ? item.title : ""}</h2>
         <p>${item.description !== undefined ? item.description : ""}</p>
-        <p><a href=""><span class="learn-more">Learn more</span></a></p>
+        <p><a href="${item.path}"><span class="learn-more">Learn more</span></a></p>
         </li>
         `
         this.$atelierOnHomePage.innerHTML += tempStr
@@ -247,7 +244,7 @@
           }).join('')
           this.$detailsHeroImage.innerHTML = `<img src="../../${art.image}">`
           this.$detailsAbout.innerHTML = `
-             <p>${art.location}</p>
+             <p>${art.title_short}</p>
              <h1>${art.title}</h1>
              <p>${art.description !== null ? art.description : ""}</p>
              <p>${this.tags !== null ? this.tags : art.this.tags}</p>

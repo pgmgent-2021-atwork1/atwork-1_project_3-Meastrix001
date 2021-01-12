@@ -14,6 +14,16 @@ body{
   max-width: 150rem;
   margin: auto;
 }
+.static_page{
+  text-decoration: underline black;
+}.static_page:hover{
+  text-decoration: underline blue;
+}
+.back-to-overview{
+  text-align: right;
+  margin: auto;
+  margin-right: -1rem;
+}
 .container{
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -60,6 +70,8 @@ font-size: 1.5rem;
 .align-right{
 text-align: right;
 width: fit-content;
+margin: 0 0 0 auto;
+font-weight: bold;
 }
 .quote{
 font-style: italic;
@@ -142,6 +154,9 @@ header{
   padding-bottom: 2rem;
   padding-top: 3rem;
 }
+header a:hover{
+  color: blue;
+}
 .home--page-intro{
   margin-right: 0;
   padding-right: 0;
@@ -171,7 +186,7 @@ header{
     display: flex;
     position: relative;
     height: 31rem;
-    margin: 8rem 0;
+    margin: 8rem auto;
     align-items: center;
   }
   .rotate-right{
@@ -250,7 +265,7 @@ header{
 }
 .footer--social-icons{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
     padding-top: 2rem;
@@ -261,6 +276,7 @@ header{
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 1rem;
 }
 .footer--social-icons li p {
   width: fit-content;
@@ -361,14 +377,19 @@ footer{
 /* ------Biography----------- */
 .bio-hero--image{ 
   width: fit-content; 
-  margin: 0 auto 0 0;
+  margin: 0 0 0 auto;
 }
 .bio-hero--image img{
   width: calc(50vw + 83rem);
   margin: auto;
   box-sizing: border-box;
-  transition: 0.3s;
   padding-right: 1rem;
+}
+@media (min-width: 75rem){
+.bio-hero--image img {
+  transition: 0.3s;
+  padding-right: 10rem;
+}
 }
 .iframeContainer{
   box-sizing: border-box;
@@ -389,10 +410,33 @@ footer{
   margin: auto;
 }
 .bio-header{
-  margin-bottom: 2rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
 }
 .bio-naturebeauty h2{
   padding-top: 3rem;
+}
+.bio-quote p,
+.bio-quote p span{
+  text-align:  center;
+  width: 80%;
+  margin: auto;
+  font-size: 1.3rem;
+}
+@media(min-width:30rem){
+  .bio-header h1,
+  .bio-header p{
+    transition: 0.3s;
+    width: 60%;
+    margin: 0 auto 0 0;
+  }
+  .bio-header p:last-child{
+    transition: 0.3s;
+    width: 60%;
+    margin: auto;
+    text-align: center;
+    margin-top: 4rem;
+  }
 }
 @media(min-width:46.75rem){
  .bio-diversity div{
@@ -418,6 +462,19 @@ padding: 2rem;
 }
 .bio-diversity-middle .bio-diversity-middle-inner{
   display: block;
+}
+.bio-drives{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row-reverse;
+}
+.bio-drives p{
+  width: 40%;
+  font-size: 1.2rem;
+  align-self: center;
+}
+.bio-drives img{
+  width: 40%;
 }
 }
 
@@ -461,7 +518,6 @@ flex-wrap: wrap;
 .detail--related-list img{
 width: 100%;
 max-width: 30rem;
-height: 25rem;
 }
 @media (min-width: 58rem){
   .detail--related-list {
@@ -470,15 +526,15 @@ height: 25rem;
     margin: auto;
     width: fit-content;
     margin-bottom: 22rem;
+    align-items: center;
 }
 .detail--related-list li{
   padding: 1rem;
 }
 }
 .detail--about-hero{
-  width: fit-content;
-  margin: 0 auto 0 0;
   padding-bottom: 4rem;
+  padding-top: 4rem;
 }
 .detail--about-hero img{
   width: calc(50vw + 83rem);
@@ -489,24 +545,87 @@ height: 25rem;
   transition: 0.3s;
 }
 .detail--about{
+  width: fit-content; 
+}
+.details{
+  margin: 0 auto 0 0;
+  box-sizing: border-box;
+  width: calc(50vw + 45%);
+  max-width: 100%;
+  position: relative;
+  padding-bottom: calc(325 / 560 * 100%);
+  margin-bottom: 2rem;
+}
+.details iframe{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+}
+@media (min-width: 75rem){
+  .details{
+    width: calc(50vw + 35%);
+  }
+  .back-to-overview{
+    margin-right: -10rem;
+  }
+}
+.detail--galery-list{
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+.detail--galery-list li{
+  width: 100%;
+  margin: auto;
+  box-sizing: border-box;
   padding-bottom: 4rem;
 }
+.detail--galery img{
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+  margin: auto;
+}
+.detail--galery-list img:nth-child(5n),
+.detail--galery-list li:nth-child(5n){
+  width: calc(100% + 50rem);
+  max-width: unset;
+  padding: 0;
+}
+.detail--related h3{
+  width: fit-content;
+    margin: auto;
+    margin-bottom: 4rem;
+}
 @media(min-width: 75rem){
+  .detail--about{
+
+    margin-top: 4rem;
+  margin-bottom: 4rem;
+  }
+  .static_flex{
+    display: flex;
+    justify-content: space-between;
+  }
+  .detail--about-inner{
+width: 50%;
+  }
+  .detail--about-date{
+width: 10%;
+  }
   .detail--about-hero img {
     transition: 0.3s;
     padding-right: 10rem;
 }
-}
 .detail--galery-list li{
-  display: flex;
-  flex-wrap: wrap;
-  margin: auto;
-  padding-bottom: 4rem;
+  width: 50%;
 }
-.detail--galery img{
-  width: 26rem;
-  padding: 1rem;
-  margin: auto;
+.detail--galery-list{
+  
+
+}
 }
 /* ------contact------ */
 .contact-container-top{
