@@ -10,6 +10,7 @@
       this.$artAndExhCategoriesList = document.querySelector('.art-exh-categories')
       this.$artAndExhYearsList = document.querySelector('.art-exh-years')
       this.$artAndExhlist = document.querySelector('.art-exh--list');
+      this.$artSetActiveState = document.querySelectorAll('.art-exh-categories li')
       this.$artAndExhlistOnHomePage = document.querySelector('.hp-art-exhibitons--list');
       this.$atelierOnHomePage = document.querySelector('.hp-atelier--list');
       this.$footerGalery = document.querySelector('.footer-galery-list');
@@ -124,17 +125,32 @@
       })
     },
     createHTMLForArtLineUp(data) {
+      console.log(this.URLCategory)
       if (this.$artAndExhlist) {
         let mapArt = years.map(year => {
           const filterTroughArt = data.filter(art => {
-            return art.year.indexOf(year) > -1;
+            if (this.URLCategory === 'Show all' || this.URLCategory === null) {
+              return art.year.indexOf(year) > -1
+            } else {
+              return art.year.indexOf(year) > -1 && art.tags.indexOf(this.URLCategory) > -1;
+            }
           });
-          console.log(filterTroughArt)
+          for (const i of this.$artSetActiveState) {
+            if (i.getAttribute("data-id") === this.URLCategory){
+              console.log(1)
+              i.classList.add('active_state')
+            } else {
+              console.log(2)
+              i.classList.remove('active_state')
+            }}
           let filterdArt = filterTroughArt.map(item => {
+            item.tags.map(tag => {
+              this.categoryTag = tag  
+            })
             let allImages = item.images.map((img, index) => {
               return `<img class="lazy" loading="lazy" src="../media/images/${img}" alt="...">`
             }).join('')
-            this.artTitleParam = item.title.replace(/ /g, '-')
+            this.artTitleParam = item.title.replace(/ /g, '-');
             return `
             <div class="art-exh--lineUp--block">
             <section class="art-exh--lineUp--inner">
@@ -210,7 +226,7 @@
       this.$artAndExhYearsList.innerHTML = tempStrForYears
       let tempStrForCats = '';
       categories.map(cat => {
-        tempStrForCats += `<li data-id="${cat}"><a>${cat}<a></li>`
+        tempStrForCats += `<li data-id="${cat}"><a href="index.html?cat=${cat}">${cat}<a></li>`
       })
       this.$artAndExhCategoriesList.innerHTML = tempStrForCats
     },
@@ -299,11 +315,13 @@
       const searchForParam = new URLSearchParams(searchURL)
       const getParam = searchForParam.get('title')
       const getID = searchForParam.get('id')
+      const getCat = searchForParam.get('cat')
       this.URLparameter = getParam
       this.URLIDParameter = getID
+      this.URLCategory = getCat
+      console.log(`Parameter found: ${getParam || getID}`)
       if (getParam || getID !== null) {
         this.fetchJSONS()
-        console.log(`Parameter found: ${getParam || getID}`)
       }
     }
   }

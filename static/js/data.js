@@ -4,7 +4,7 @@ categories = [
   'Documentary',
   'Exhibition',
   'Painting',
-  'Public art',
+  'Installation',
   'Sculpture',
   'Study'
 ]

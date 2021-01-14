@@ -33,6 +33,10 @@ body{
   transition: 0.3s;
   padding-left: 1rem;
  }
+ .active_state{
+  color: blue;
+  text-decoration: underline 3px blue;
+ }
 @media(min-width:75rem){
   .wrapper{
     transition: 0.3s;
@@ -112,7 +116,7 @@ h1, h2, h3, p, a{
     font-size: 1.3rem;
   }
   .logo{
-    width: 16rem;
+    width: 9rem;
   }
 }
 #toTop{
@@ -547,6 +551,12 @@ max-width: 30rem;
 .detail--about{
   width: fit-content; 
 }
+.detail--about .detail--about-OP{
+  margin-top: 2rem;
+}
+.detail--about .detail--about-OP p {
+  font-size: 0.9  rem;
+}
 .details{
   margin: 0 auto 0 0;
   box-sizing: border-box;
@@ -569,6 +579,17 @@ max-width: 30rem;
   }
   .back-to-overview{
     margin-right: -10rem;
+  }
+  .detail--about{
+    display: flex;
+    justify-content: space-between;
+  }
+  .detail--about .detail--about-desc{
+    width: 70%;
+  }
+  .detail--about .detail--about-OP{
+    width: 20%;
+    margin-top: 0;
   }
 }
 .detail--galery-list{
