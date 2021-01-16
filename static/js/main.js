@@ -10,6 +10,7 @@
       this.$artAndExhCategoriesList = document.querySelector('.art-exh-categories')
       this.$artAndExhYearsList = document.querySelector('.art-exh-years')
       this.$artAndExhlist = document.querySelector('.art-exh--list');
+      this.$artAndExhlineUp = document.querySelector('.art-exh--lineUp')
       this.$artSetActiveState = document.querySelectorAll('.art-exh-categories li')
       this.$artAndExhlistOnHomePage = document.querySelector('.hp-art-exhibitons--list');
       this.$atelierOnHomePage = document.querySelector('.hp-atelier--list');
@@ -29,10 +30,15 @@
       this.$pressDetailsPageAbout = document.querySelector('.my-secret-garden-valencia--about')
       this.$pressDetailsPageGallerylist = document.querySelector('.my-secret-garden-valencia--gallery-list')
       this.$pressDetailsDownloads = document.querySelector('.my-secret-garden-valencia--downloadables-list')
+      this.$listView = document.querySelector('.list')
+      this.$mapView = document.querySelector('.map')
+      this.$fakeMap = document.querySelector('.fake_map')
+
     },
     async buildUI() {
       if (this.$artAndExhHeader) {
         this.createHTMLforArtAndExhibitionsHeader()
+        this.listToggle()
       }
       if (this.$artAndExhlist || this.$artAndExhlistOnHomePage || this.$pressImagesList) {
         const artAPI = new ArtJson();
@@ -54,14 +60,6 @@
         const PressJsonFile = new PressJson();
         const PressJSONFile = await PressJsonFile.createLineUpForPressJson();
         this.createHTMLForPress(PressJSONFile)
-      }
-      if (this.$artAndExhlist) {
-        this.artAndExhFilterValue = null
-      this.$artAndExhCategoriesList.addEventListener('click', (ev) => {
-        const filterValue = ev.target.dataset.id || ev.target.parentNode.dataset.id
-        console.log(this.artAndExhFilterValue)
-        this.artAndExhFilterValue = filterValue
-      })
       }
     },
     async fetchJSONS() {
@@ -187,6 +185,17 @@
         })
       }
     },
+    listToggle(){
+      console.log(this.$listView)
+      this.$listView.addEventListener('click', (evt) => {
+        this.$artAndExhlineUp.classList.add('open')
+        this.$fakeMap.classList.remove('open')
+      })
+      this.$mapView.addEventListener('click', (evt) => {
+          this.$fakeMap.classList.add('open')
+          this.$artAndExhlineUp.classList.remove('open')
+      })
+    },
     createHTMLfromJSON(data) {
       let tempStr
       data.map(item => {
@@ -224,9 +233,10 @@
         tempStrForYears += `<li><a href="#${year}">${year}</a></li>`
       })
       this.$artAndExhYearsList.innerHTML = tempStrForYears
+
       let tempStrForCats = '';
       categories.map(cat => {
-        tempStrForCats += `<li data-id="${cat}"><a href="index.html?cat=${cat}">${cat}<a></li>`
+        tempStrForCats += `<li><a href="index.html?cat=${cat}">${cat}<a></li>`
       })
       this.$artAndExhCategoriesList.innerHTML = tempStrForCats
     },
@@ -288,9 +298,9 @@
       data.map(item =>{
         console.log(item)
         if (item.id === this.URLIDParameter) {
-          tempStr = `<li class="download-button"><a href="${item.pdf !== null ? item.pdf : ''}" download><p>download pdf</p></a></li>`
-          tempStr += `<li class="download-button"><a href="${item.docx !== null ? item.docx : ""}" download><p>download docx</p></a></li>`
-          tempStr += `<li class="download-button"><a href="${item.zipFile !== null ? item.zipFile : ""}" download><p>download zipFile</p></a></li>`
+          tempStr = `<li class="download-button"><a href="${item.pdf !== null ? item.pdf : ''}" download><img src="../../media/pdfsvg.svg"><p>download pdf</p></a></li>`
+          tempStr += `<li class="download-button"><a href="${item.docx !== null ? item.docx : ""}" download><img src="../../media/file.svg"><p>download docx</p></a></li>`
+          tempStr += `<li class="download-button"><a href="${item.zipFile !== null ? item.zipFile : ""}" download><img src="../../media/file-zip.svg"><p>download zipFile</p></a></li>`
 
           this.$pressDetailsDownloads.innerHTML = `${tempStr}`
           this.$pressDetailsPageHeader.innerHTML =`
